@@ -13,7 +13,6 @@ export default {
     list: F.from(['all', 'filter'], 'mix'),
     allDone: F.v(true),
     editID: F,
-    xxx: F,
     count: F.v(0),
   },
   actions: {

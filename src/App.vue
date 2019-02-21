@@ -14,15 +14,16 @@
       />
     </header>
     <Items></Items>
-    <Xfooter></Xfooter>
-
+    <Ifooter></Ifooter>
+    <About></About>
   </section>
 </template>
 
 <script>
 import "./assets/todo.css";
 import Items from "./components/Items";
-import Xfooter from "./components/XFooter";
+import Ifooter from "./components/IFooter";
+import About from './components/About';
 
 export default {
   name: "App",
@@ -30,8 +31,9 @@ export default {
     newName: ""
   }),
   components: {
+    About,
     Items,
-    Xfooter
+    Ifooter
   }
 };
 </script>

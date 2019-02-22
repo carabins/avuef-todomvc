@@ -3,11 +3,11 @@
     <span class="todo-count"><strong>{{count}}</strong> item left</span>
     <ul class="filters" >
       <li>
-        <a v-for="f in filterTags"
-            :class="{selected:f===filter}"
-            @click="$f.items.filter(f)"
+        <a v-for="name in filterTags"
+            :class="{selected:name===filter}"
+            @click="$f.items.filter(name)"
             style="cursor: pointer">
-          {{f}}
+          {{name}}
         </a>
       </li>
     </ul>

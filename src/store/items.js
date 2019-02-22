@@ -7,13 +7,17 @@ export const filterTags = {
   complete: 'Completed',
 }
 export default {
+  // Flow constructor
   flows: {
-    all: F.stored.observ.v({}),
-    filter: F.v(filterTags.all),
+    // All data putted in the flow will be wrapped in the Vue.observable and save to LocalStorage
+    all: F.stored.observ.value({}),
+    filter: F.value(filterTags.all),
+    // Get data from 'mix' action on every change 'all' and 'filter' flows
     list: F.from(['all', 'filter'], 'mix'),
-    allDone: F.v(true),
-    editID: F,
-    count: F.v(0),
+    // Flows with values
+    allDone: F.value(true),
+    count: F.value(0),
+    editID: F, // Empty flow
   },
   actions: {
     mix(all, filter) {
@@ -22,7 +26,7 @@ export default {
       Object.keys(all).map((k) => {
         const v = all[k]
         if (v.completed) count++
-        switch (this.$f.items.filter.v) {
+        switch (filter) {
           case filterTags.all: a.push(v)
             break
           case filterTags.active: if (!v.completed) a.push(v)
@@ -31,35 +35,37 @@ export default {
             break
         }
       })
-      this.$f.items.count(count)
-      this.$f.items.allDone(count === Object.keys(all).length)
+      const totalItems = Object.keys(all).length
+      this.$f.items.count(totalItems - count)
+      this.$f.items.allDone(count === totalItems)
       return a
     },
     remove(id) {
-      this.$f.items.all.mutate((o) => {
-        delete o[id]
-        return o
-      })
+      const all = this.$f.items.all()
+      delete all[id]
+      this.$f.items.all(all)
     },
     add(title) {
       title = title.trim()
       if (title.length === 0) return
       const id = Math.floor(Math.random() * 100)
-      this.$f.items.all.mutate(o => (
-        o[id] = { id, title, completed: false },
-        o))
+      const all = this.$f.items.all()
+      all[id] = { id, title, completed: false }
+      this.$f.items.all(all)
     },
     selectAll(v) {
-      this.$f.items.all.mutate(o => (
-        Object.keys(o).forEach((k) => {
-          o[k].completed = v
-        }),
-        o))
+      const all = this.$f.items.all()
+      Object.keys(all).forEach((k) => {
+        all[k].completed = v
+      })
+      this.$f.items.all(all)
     },
     removeCompleted() {
-      this.$f.items.all.mutate(o => (Object.keys(o).forEach((k) => {
-        if (o[k].completed) delete o[k]
-      }), o))
+      const all = this.$f.items.all()
+      Object.keys(all).forEach((k) => {
+        if (all[k].completed) delete all[k]
+      })
+      this.$f.items.all(all)
     },
   },
 }

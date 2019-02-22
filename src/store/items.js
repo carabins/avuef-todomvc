@@ -24,19 +24,20 @@ export default {
       let count = 0
       const a = []
       Object.keys(all).map((k) => {
-        const v = all[k]
-        if (v.completed) count++
+        const item = all[k]
+        if (item.completed) count++
         switch (filter) {
-          case filterTags.all: a.push(v)
+          case filterTags.all: a.push(item)
             break
-          case filterTags.active: if (!v.completed) a.push(v)
+          case filterTags.active: if (!item.completed) a.push(item)
             break
-          case filterTags.complete: if (v.completed) a.push(v)
+          case filterTags.complete: if (item.completed) a.push(item)
             break
         }
       })
       const totalItems = Object.keys(all).length
       this.$f.items.count(totalItems - count)
+      // All side effects are logged in the console by default.
       this.$f.items.allDone(count === totalItems)
       return a
     },

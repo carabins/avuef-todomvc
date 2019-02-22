@@ -5,7 +5,6 @@
     <ul class="todo-list">
       <Item v-for="todo in todos" :key="todo.id" :todo="todo"/>
     </ul>
-    <!--<pre > {{Object.keys(todos).map(k=>todos[k])}} </pre>-->
   </section>
 </template>
 

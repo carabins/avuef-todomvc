@@ -3,7 +3,6 @@
     class="todo"
     :class="{ completed: todo.completed, editing: isEdit }"
   >
-    <!--<pre>{{todo}}</pre>-->
     <div class="view" v-if="!isEdit">
       <input
         class="toggle"
@@ -25,7 +24,7 @@
 
 <script>
 export default {
-  props: ['xid','todo'],
+  props: ['xid', 'todo'],
   data: () => ({
     newName: '',
   }),
@@ -37,7 +36,9 @@ export default {
     doneEdit() {
       this.todo.title = this.newName.trim()
       this.$f.items.editID(null)
-      this.$f.items.all.emit()
+      // TODO remove comment for save to LocalStore
+      // just notify all listeners
+      // this.$f.items.all.emit()
     },
   },
   computed: {

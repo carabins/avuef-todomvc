@@ -1,14 +1,14 @@
 <template>
   <footer class="footer">
     <span class="todo-count"><strong>{{count}}</strong> item left</span>
-    <!--pre {{filterTags}}-->
     <ul class="filters" >
       <li>
         <a v-for="f in filterTags"
             :class="{selected:f===filter}"
             @click="$f.items.filter(f)"
-            style="cursor: pointer"
-        >{{f}}</a>
+            style="cursor: pointer">
+          {{f}}
+        </a>
       </li>
     </ul>
     <button class="clear-completed" @click="$a.items.removeCompleted()">Clear completed</button>

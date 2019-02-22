@@ -1,5 +1,4 @@
 import { F } from 'avuef'
-import Vue from 'vue'
 
 export const filterTags = {
   all: 'All',
@@ -19,6 +18,7 @@ export default {
     count: F.value(0),
     editID: F, // Empty flow
   },
+  // Module actions
   actions: {
     mix(all, filter) {
       let count = 0

@@ -11,7 +11,7 @@
         @change="$f.items.all.emit();"
       />
       <label @dblclick="$f.items.editID(todo.id)">{{ todo.title }}</label>
-      <button class="destroy" @click="$a.items.remove(todo.id);"></button>
+      <button class="destroy" @click="$f.items.all.remove(todo.id);"></button>
     </div>
     <input v-else
         class="edit" type="text" v-model="newName"

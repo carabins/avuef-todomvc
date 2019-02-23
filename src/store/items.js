@@ -9,7 +9,7 @@ export default {
   // Flow constructor
   flows: {
     // All data putted in the flow will be wrapped in the Vue.observable and save to LocalStorage
-    all: F.stored.observ.action('').value({}),
+    all: F.stored.observ.value({}),
     filter: F.value(filterTags.all),
     // Get data from 'mix' action on every change 'all' and 'filter' flows
     list: F.from(['all', 'filter'], 'mix'),

@@ -9,7 +9,7 @@ export default {
   // Flow constructor
   flows: {
     // All data putted in the flow will be wrapped in the Vue.observable and save to LocalStorage
-    all: F.stored.observ.value({}),
+    all: F.stored.observ.action('').value({}),
     filter: F.value(filterTags.all),
     // Get data from 'mix' action on every change 'all' and 'filter' flows
     list: F.from(['all', 'filter'], 'mix'),
@@ -23,7 +23,8 @@ export default {
     mix(all, filter) {
       let count = 0
       const a = []
-      Object.keys(all).map((k) => {
+      const ids = Object.keys(all)
+      ids.map((k) => {
         const item = all[k]
         if (item.completed) count++
         switch (filter) {
@@ -35,38 +36,27 @@ export default {
             break
         }
       })
-      const totalItems = Object.keys(all).length
+      const totalItems = ids.length
       this.$f.items.count(totalItems - count)
       // All side effects are logged in the console by default.
       this.$f.items.allDone(count === totalItems)
       return a
     },
-    remove(id) {
-      const all = this.$f.items.all()
-      delete all[id]
-      this.$f.items.all(all)
-    },
     add(title) {
       title = title.trim()
       if (title.length === 0) return
       const id = Math.floor(Math.random() * 100)
-      const all = this.$f.items.all()
-      all[id] = { id, title, completed: false }
-      this.$f.items.all(all)
+      this.$f.items.all.set(id, { id, title, completed: false })
     },
     selectAll(v) {
-      const all = this.$f.items.all()
-      Object.keys(all).forEach((k) => {
-        all[k].completed = v
+      this.$f.items.all.each((item) => {
+        item.completed = v
       })
-      this.$f.items.all(all)
     },
     removeCompleted() {
-      const all = this.$f.items.all()
-      Object.keys(all).forEach((k) => {
-        if (all[k].completed) delete all[k]
+      this.$f.items.all.each((item, key, all) => {
+        if (item.completed) delete all[key]
       })
-      this.$f.items.all(all)
     },
   },
 }

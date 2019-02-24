@@ -13,7 +13,7 @@ export default {
     list: F.stored.observ.value([]),
     // Call action on every data change
     filter: F.action("changeFilter").value(filterTags.all),
-    // Get data from 'mix' action on every change 'all' and 'filter' flows
+    // Get data from 'list' and compute in "calcStats" action
     stats: F.from("list", "calcStats"),
     editItem: F // Empty flow
   },
@@ -47,16 +47,16 @@ export default {
     selectAll(v) {
       this.$f.items.list.each(item => {
         item.completed = v
-      });
+      })
     },
     removeCompleted() {
       this.$f.items.list.mutate(list => {
         const pureList = []
         list.forEach(item => {
           if (!item.completed) pureList.push(item)
-        });
+        })
         return pureList
-      });
+      })
     }
   }
 }

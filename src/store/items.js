@@ -50,13 +50,9 @@ export default {
       })
     },
     removeCompleted() {
-      this.$f.items.list.mutate(list => {
-        const pureList = []
-        list.forEach(item => {
-          if (!item.completed) pureList.push(item)
-        })
-        return pureList
-      })
+      this.$f.items.list.mutate(list =>
+            list.filter(item=> item.completed)
+      )
     }
   }
 }

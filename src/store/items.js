@@ -45,9 +45,9 @@ export default {
       this.$f.items.list.push({ title, completed: false })
     },
     selectAll(v) {
-      this.$f.items.list.each(item => {
+      this.$f.items.list.each(item =>
         item.completed = v
-      })
+      )
     },
     removeCompleted() {
       this.$f.items.list.mutate(list =>

@@ -5,13 +5,12 @@ module.exports = {
   },
   extends: [
     'plugin:vue/essential',
-    '@vue/airbnb',
   ],
   plugins: [
     'vue'
   ],
   rules: {
-    "operator-linebreak:": [1, "none"],
+    "operator-linebreak:": [0, "none"],
     'quote-props': [2, 'as-needed'],
     'semi': [2, 'never'],
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',

@@ -14,13 +14,12 @@ import Item from './Item'
 export default {
   data: () => ({
     newName: '',
-    todos: [],
     showList: false,
   }),
   components: { Item },
   mapFlow: {
     todos: 'items.list',
-    allDone: 'items.allDone',
+    allDone: 'items.stats.allDone',
   },
   computated: {
     showList() {

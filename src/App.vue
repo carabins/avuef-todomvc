@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import "./assets/todo.css";
-import Items from "./components/Items";
-import Ifooter from "./components/IFooter";
-import About from './components/About';
+import "./assets/todo.css"
+import Items from "./components/Items"
+import Ifooter from "./components/IFooter"
+import About from './components/About'
 
 export default {
   name: "App",
@@ -35,5 +35,5 @@ export default {
     Items,
     Ifooter
   }
-};
+}
 </script>

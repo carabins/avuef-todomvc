@@ -1,13 +1,15 @@
 <template>
   <footer class="footer">
-    <span class="todo-count"><strong>{{count}}</strong> item left</span>
-    <ul class="filters" >
+    <span class="todo-count"><strong>{{ count }}</strong> item left</span>
+    <ul class="filters">
       <li>
-        <a v-for="name in filterTags"
-            :class="{selected:name===filter}"
-            @click="$f.items.filter(name)"
-            style="cursor: pointer">
-          {{name}}
+        <a
+          v-for="name in filterTags"
+          :class="{ selected: name === filter }"
+          @click="$f.items.filter(name)"
+          style="cursor: pointer"
+        >
+          {{ name }}
         </a>
       </li>
     </ul>
@@ -16,13 +18,13 @@
 </template>
 
 <script>
-import { filterTags } from '../store/items'
+import { filterTags } from "../store/items"
 
 export default {
   data: () => ({ filterTags }),
   mapFlow: {
-    count: 'items.count',
-    filter: 'items.filter',
-  },
+    count: "items.stats.remain",
+    filter: "items.filter"
+  }
 }
 </script>

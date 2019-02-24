@@ -23,7 +23,8 @@ export default {
     mix(all, filter) {
       let count = 0
       const a = []
-      Object.keys(all).map((k) => {
+      const ids = Object.keys(all)
+      ids.map((k) => {
         const item = all[k]
         if (item.completed) count++
         switch (filter) {
@@ -35,7 +36,7 @@ export default {
             break
         }
       })
-      const totalItems = Object.keys(all).length
+      const totalItems = ids.length
       this.$f.items.count(totalItems - count)
       // All side effects are logged in the console by default.
       this.$f.items.allDone(count === totalItems)

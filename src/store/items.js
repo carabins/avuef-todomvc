@@ -51,7 +51,7 @@ export default {
     },
     removeCompleted() {
       this.$f.items.list.mutate(list =>
-            list.filter(item=> item.completed)
+            list.filter(item=> !item.completed)
       )
     }
   }

@@ -1,20 +1,19 @@
-import './assets/todo.css';
-import Vue from 'vue';
-import { F, AVue } from 'avuef';
-import App from './App.vue';
+import "./assets/todo.css"
+import Vue from "vue"
+import { F, AVue } from "avuef"
+import App from "./App.vue"
 
-import items from './store/items';
+import items from "./store/items"
 
-
-Vue.config.devtools = false
-Vue.config.productionTip = false
+// Vue.config.devtools = false
+// Vue.config.productionTip = false
 
 const avuef = new AVue({
-  items,
+  items
 })
-Vue.use(avuef);
-Vue.config.silent = true;
+Vue.use(avuef)
+Vue.config.silent = true
 new Vue({
-  el: '#app',
-  render: h => h(App),
+  el: "#app",
+  render: h => h(App)
 })

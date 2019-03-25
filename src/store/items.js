@@ -12,9 +12,9 @@ export default {
     // Flows with 'stored' and 'observ' will be wrapped in the Vue.observable and saved to LocalStorage
     list: F.stored.observ.value([]),
     // Call action on every data change
-    filter: F.action("changeFilter").value(filterTags.all),
+    filter: F.bind("changeFilter").value(filterTags.all),
     // Get data from 'list' and compute in "calcStats" action
-    stats: F.from("list", "calcStats"),
+    stats: F.in("list", "calcStats"),
     editItem: F // Empty flow
   },
   // Module actions

@@ -1404,10 +1404,10 @@ autoprefixer@^9.4.8:
     postcss "^7.0.14"
     postcss-value-parser "^3.3.1"
 
-avuef@^0.2.21:
-  version "0.2.41"
-  resolved "https://registry.yarnpkg.com/avuef/-/avuef-0.2.41.tgz#09750460e2b56f8f4e45558a765a9c7791c3be10"
-  integrity sha512-IIKHwOJZrNLYnds6ByuE4RU5dciGmM094dSlAdD+12hGgKT1FJLa1oW91rRb4RaVGxIrDNDsq83N6j6ywf1s5A==
+avuef@^0.2.47:
+  version "0.2.47"
+  resolved "https://registry.yarnpkg.com/avuef/-/avuef-0.2.47.tgz#2053bd2dcf6443fc9cff1826b0f846d50620855a"
+  integrity sha512-fS/ay+3fsPi7IguAxplkeAot1218NxZIocsAy4W5NAywmtFm1Pk7MkARc30lBp61MXwTVrsiJpYSF+201paVcw==
   dependencies:
     alak "^0.10.49"
 

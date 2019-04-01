@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { F } from "avuef"
+import { N } from "avuef"
 
 export const filterTags = {
   all: "All",
@@ -7,15 +7,15 @@ export const filterTags = {
   complete: "Completed"
 }
 export default {
-  // Flow constructor
-  flows: {
+  // Flow Nodes constructor
+  nodes: {
     // Flows with 'stored' and 'observ' will be wrapped in the Vue.observable and saved to LocalStorage
-    list: F.stored.observ.value([]),
+    list: N.stored.observ.start([]),
     // Call action on every data change
-    filter: F.bind("changeFilter").value(filterTags.all),
+    filter: N.bind("changeFilter").value(filterTags.all),
     // Get data from 'list' and compute in "calcStats" action
-    stats: F.in("list", "calcStats"),
-    editItem: F // Empty flow
+    stats: N.in("list", "calcStats"),
+    editItem: N // Empty node flow
   },
   // Module actions
   actions: {

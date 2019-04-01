@@ -12,6 +12,7 @@ module.exports = {
   rules: {
     "operator-linebreak:": [0, "none"],
     'quote-props': [2, 'as-needed'],
+    'quotes' : [2, "single"],
     'semi': [2, 'never'],
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
